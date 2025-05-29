@@ -1,0 +1,71 @@
+{
+  "name": "posawesome-desktop",
+  "version": "1.0.0",
+  "description": "POS Desktop Application using Electron and Frappe Bench",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron --no-sandbox main.js",
+    "watch": "nodemon --watch main.js --exec 'electron --no-sandbox main.js'",
+    "build:win": "electron-builder --win",
+    "build:mac": "electron-builder --mac",
+    "build:linux": "electron-builder --linux",
+    "build": "electron-builder"
+  },
+  "author": {
+    "name": "codeboy",
+    "email": "codeboy@example.com"
+  },
+  "homepage": "https://github.com/codeboy/posawesome-desktop",
+  "build": {
+    "appId": "com.nxt.posdesktop",
+    "productName": "POS Desktop App",
+    "files": [
+      "**/*"
+    ],
+    "extraResources": [
+      "icon.png"
+    ],
+    "directories": {
+      "buildResources": "build"
+    },
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "icon": "build/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "perMachine": false,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "POS Desktop App"
+    },
+    "mac": {
+      "target": [
+        "dmg",
+        "zip"
+      ],
+      "icon": "build/icon.png",
+      "category": "public.app-category.business"
+    },
+    "linux": {
+      "maintainer": "codeboy <codeboy@example.com>",
+      "target": [
+        "AppImage",
+        "deb"
+      ],
+      "icon": "build/icon.png",
+      "category": "Business"
+    }
+  },
+  "devDependencies": {
+    "electron": "^26.1.0",
+    "electron-builder": "^24.13.3",
+    "nodemon": "^3.1.10"
+  },
+  "dependencies": {
+    "auto-launch": "^5.0.6"
+  }
+}
